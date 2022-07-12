@@ -1,15 +1,18 @@
 #!/bin/sh
-#              _        _           _ _     _       _     
-#   __ _ _   _| |_ ___ | |__  _   _(_) | __| |  ___| |__  
-#  / _` | | | | __/ _ \| '_ \| | | | | |/ _` | / __| '_ \ 
-# | (_| | |_| | || (_) | |_) | |_| | | | (_| |_\__ \ | | |
-#  \__,_|\__,_|\__\___/|_.__/ \__,_|_|_|\__,_(_)___/_| |_|
+#
+# ######   #######  #######  #######   #####   #######  ######      #     ######   
+# #     #  #     #  #     #     #     #     #     #     #     #    # #    #     #  
+# #     #  #     #  #     #     #     #           #     #     #   #   #   #     #  
+# ######   #     #  #     #     #      #####      #     ######   #     #  ######   
+# #     #  #     #  #     #     #           #     #     #   #    #######  #        
+# #     #  #     #  #     #     #     #     #     #     #    #   #     #  #        
+# ######   #######  #######     #      #####      #     #     #  #     #  #        
+# 
 #                                                         
 #
 # https://git.io/autobuild 
 #
-# This script performs the initial autotools bootstrapping.
- 
+# This script performs rpmbuild environment setup and the initial autotools bootstrapping.
 # Abort the script and exit with failure if any command below exits with
 # a non-zero exit status.
 set -e
@@ -35,12 +38,13 @@ set -e
 # to install missing files and re-run configure and make if needed.
 #[ -e configure ] || autoreconf -im
 #aclocal && automake --gnu --add-missing && autoconf
-aclocal && autoconf
+[ -e ./configure ]  &&  ( rm -f configure && aclocal && autoconf )
+
  
 # If the Makefile doesn't exist, the previous step didn't run; this
 # indicates the presence of a configure script. Run that script and
 # then call make.
-[ -e Makefile ]  || ( ./configure && make )
+[ -e ./Makefile ]  &&  ( rm -f Makefile && ./configure && make )
  
 # If src/codename doesn't exist, there was a Makefile but make hasn't
 # been run yet. Run it, which should produce the codename binary.
