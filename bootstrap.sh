@@ -30,6 +30,8 @@ set -e
 [ -e /usr/bin/h2xs    ] || (echo "sudo dnf install -y perl-devel ";exit 1)
 [ -e /usr/lib64/perl5/vendor_perl/RRDp.pm    ] || (echo "sudo dnf install -y rrdtool-perl  ";exit 1)
 
+echo "rpmbuild environment is OK now."
+echo "Remaking  ./configure and Makefile."
 
 # Create the m4/ directory if it doesn't exist.
 [ -d m4 ] || mkdir m4
@@ -44,7 +46,8 @@ set -e
 # If the Makefile doesn't exist, the previous step didn't run; this
 # indicates the presence of a configure script. Run that script and
 # then call make.
-[ -e ./Makefile ]  &&  ( rm -f Makefile && ./configure && make )
+[ -e ./Makefile  ] ||  (rm -f Makefile)
+./configure 
  
 # If src/codename doesn't exist, there was a Makefile but make hasn't
 # been run yet. Run it, which should produce the codename binary.
