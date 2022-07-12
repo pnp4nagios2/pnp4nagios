@@ -39,6 +39,9 @@ may remove or edit it.
 `configure.ac' if you want to change it or regenerate `configure' using
 a newer version of `autoconf'.
 
+   bootstrap.sh will check your rpmbuild enviroment and regenerate
+   existing configure script if you made changes to configure.in
+
 The simplest way to compile this package is:
 
   1. `cd' to the directory containing the package's source code and type
