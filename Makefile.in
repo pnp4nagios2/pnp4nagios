@@ -41,7 +41,11 @@ none:
 	@echo "   clean"
 	@echo "   fullinstall"
 	@echo "   install-plugins"
+<<<<<<< HEAD
+	@echo "   rpm"
+=======
 	@echo "   compile install-init install-config install-processperfdata install-html"
+>>>>>>> 7d64078689f21b625fb6ebecb1d534766880ffd8
 
 all:
 	cd $(SRC_BASE) && $(MAKE)
@@ -183,4 +187,7 @@ fullinstall: compile install-webconf install-config install-init
 	@echo "Enjoy."
 	@echo ""
 
-rpm: 
+
+rpm: all
+	@echo "*** TBC: making rpms from .spec files in contrib  ***"
+
