@@ -121,9 +121,8 @@ class pnp_Core {
         preg_match('/^(-?[0-9\.,]+)\s*(\S?)(\S?)/',$value,$matches);
 
         $mag = 0;
-        $value = $matches[1];
         while ($value >= $base){
-            $value /= $base;
+           $value /= $base;
             $mag++;
         }
         $pos = 0;
