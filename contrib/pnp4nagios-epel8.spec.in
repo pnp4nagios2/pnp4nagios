@@ -25,7 +25,7 @@ Requires(preun): initscripts
 Requires(postun): initscripts
 
 %description
-PNP is an addon to nagios which analyzes performance data provided by plugins
+PNP is an addon to nagioscore which analyzes performance data provided by plugins
 and stores them automatically into RRD-databases.
 
 
