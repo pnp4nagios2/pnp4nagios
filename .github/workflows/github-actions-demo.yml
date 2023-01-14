@@ -1,7 +1,6 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-runs-on: self-hosted
-on: [push]
+on: self-hosted
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
